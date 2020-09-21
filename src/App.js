@@ -13,21 +13,21 @@ function App() {
 
   useEffect(() => {
 
-    auth.onAuthStateChanged(authUser => {
+    auth.onAuthStateChanged((authUser) => {
       console.log('The user use .>>.>>.>>', authUser);
 
       if (authUser) {
         //the use just login in/the use was logged in
         dispatch({
           type: 'SET_USER',
-          user: authUser
-        })
+          user: authUser,
+        });
       } else {
         //the use is logged out
         dispatch({
           type: 'SET_USER',
-          user: null
-        })
+          user: null,
+        });
       }
     })
   }, []) 
