@@ -10,14 +10,12 @@ function Header() {
   
   const [{ basket, user }, dispatch] = useStateValue();
 
-  console.log("Uporabnik je 1", user);
-
   const handlAuthentication = () => {
     if (user) {
       auth.signOut();
     }
   }
-  console.log("Uporabnik je 2", user);
+  console.log("Tole je user ", user);
 
   return (
     <div className="header">
@@ -37,7 +35,8 @@ function Header() {
       <div className="header__nav">
         <Link to={!user && './login'}>
           <div onClick={handlAuthentication} className="header__option">
-            <span className="header__optionLineOne">Hello Guest</span>
+            {/*user?.email ||  */}
+            <span className="header__optionLineOne">Hello {!user ? "Guest" : user.email}</span>
             <span className="header__optionLineTwo">{user ? "Sign Out" : "Sign In"}</span>
           </div>
         </Link>
